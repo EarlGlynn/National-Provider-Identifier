@@ -5,13 +5,13 @@
 # http://nppes.viva-it.com/NPI_Files.html
 
 # UMKC Center for Health Insights
-# Earl F Glynn, 2014-09-24.
+# Earl F Glynn, 2014-10-20.
 
 ##############################################################################
 ### Setup
 
 #setwd("C:/Data/US-Government/Centers-for-Medicare-and-Medicaid-Services/National-Provider-Identifier/")  ##### Modify as appropriate
-setwd("E:/Government/Federal/HHS/CMS/National-Provider-Identifier/")                                     ##### Modify as appropriate
+setwd("E:/FOIA/Centers-for-Medicare-and-Medicaid-Services/National-Provider-Identifier/")                  ##### Modify as appropriate
 
 sink("0-CMS-National-Provider-Identifier-Download.txt", split=TRUE)
 print(Sys.time())
@@ -19,7 +19,7 @@ print(Sys.time())
 library(downloader)  # platform neutral download function
 library(tools)       # md5sum
 
-DATA.DIR <- "DATA"
+DATA.DIR <- "DATA/2014-10-15"                                                                            ##### Modify as appropriate
 if (! file.exists(DATA.DIR) )
 {
   dir.create(DATA.DIR)
@@ -28,7 +28,7 @@ if (! file.exists(DATA.DIR) )
 ##############################################################################
 ### Download
 
-download.url <- "http://nppes.viva-it.com/NPPES_Data_Dissemination_September_2014.zip"
+download.url <- "http://nppes.viva-it.com/NPPES_Data_Dissemination_October_2014.zip"                     ###### Modify as appropriate
 zip.filename <- paste0(DATA.DIR, "/NPPES_Data_Dissemination.zip")
 download(download.url, zip.filename, mode = "wb")
 print( md5sum(zip.filename) )
