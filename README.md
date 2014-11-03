@@ -1,6 +1,8 @@
 National Provider Identifier (NPI) Downloadable File
 ====================================================
 
+File:  Oct. 15, 2014
+
 The Centers for Medicare and Medicaid Services provide a huge file of providers called by either of these names:
 
 * [National Plan and Provider Enumeration System (NPPES) Downloadable File](http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/NationalProvIdentStand/DataDissemination.html).
@@ -9,11 +11,11 @@ or
 
 * [National Provider Identifier (NPI) Downloadable File](http://nppes.viva-it.com/NPI_Files.html).
 
-The "Full Replacement Monthly NPI File" in Oct. 2014 was a 462 MB ZIP that becomes a huge 4.98 GB file when decompressed.
+The "Full Replacement Monthly NPI File" was a 462 MB ZIP that becomes a huge 4.98 GB file when decompressed.
 
-The complete file in Sept. 2014 had 4,416,197 observations of 329 variables.
+The complete file had 4,416,197 observations of 329 variables.
 
-The file is extremely bloated -- 2.9 billion of the 5.3 billion characters in the file are the double quotes (") used to surround each field in the CSV file.  The file contains 1.4 billion commas to separate the many empty fields. The several repeating groups of variables should be made into separate database tables.
+The file is extremely bloated -- 2.9 billion of the 5.3 billion characters in the file are double quotes (") used to surround each field in the CSV file.  The file contains 1.4 billion commas to separate the many empty fields. The several repeating groups of variables should be made into separate database tables.
 
 
 R scripts
