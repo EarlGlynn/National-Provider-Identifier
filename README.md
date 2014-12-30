@@ -29,6 +29,8 @@ Scripts
 
 **3-CMS-NPI-split.R**:  The original file contains two sets of repeating groups. One can have up to 15 repeating groups, the other up to 50. To normalize the data and reduce the huge waste of space to store no data, this script creates two new files intended to be database tables:  **MASTER-taxonomy-license.txt** and **MASTER-other-identifier.txt**.
 
+**4-Missouri-Connections.R**:  Find providers with Missouri connections.
+
 
 The file **NPPES-NPI-Overview.docx** gives some additional details.
 
