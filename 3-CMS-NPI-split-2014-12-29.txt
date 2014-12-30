@@ -1,0 +1,203 @@
+[1] "2014-12-29 23:24:30 CST"
+[1] 4456577      76
+2837591640 bytes
+Extract hpt set 1 of 15
+[1] 4383720
+Extract hpt set 2 of 15
+[1] 5000430
+Extract hpt set 3 of 15
+[1] 5173869
+Extract hpt set 4 of 15
+[1] 5231301
+Extract hpt set 5 of 15
+[1] 5260009
+Extract hpt set 6 of 15
+[1] 5277915
+Extract hpt set 7 of 15
+[1] 5289757
+Extract hpt set 8 of 15
+[1] 5298014
+Extract hpt set 9 of 15
+[1] 5304030
+Extract hpt set 10 of 15
+[1] 5308580
+Extract hpt set 11 of 15
+[1] 5312115
+Extract hpt set 12 of 15
+[1] 5314962
+Extract hpt set 13 of 15
+[1] 5317212
+Extract hpt set 14 of 15
+[1] 5319048
+Extract hpt set 15 of 15
+[1] 5320425
+
+      1       2       3       4       5       6       7       8       9      10 
+4383720  616710  173439   57432   28708   17906   11842    8257    6016    4550 
+     11      12      13      14      15 
+   3535    2847    2250    1836    1377 
+ 1396.3  secs
+[1] "2014-12-29 23:47:47 CST"
+Read opi set 1 of 50 
+23:47:47 
+[1] 1776975
+Read opi set 2 of 50 
+23:50:43 
+[1] 2930590
+Read opi set 3 of 50 
+23:53:56 
+[1] 3682847
+Read opi set 4 of 50 
+23:57:07 
+[1] 4086376
+Read opi set 5 of 50 
+00:00:04 
+[1] 4337188
+Read opi set 6 of 50 
+00:02:49 
+[1] 4493269
+Read opi set 7 of 50 
+00:05:38 
+[1] 4599185
+Read opi set 8 of 50 
+00:08:31 
+[1] 4675222
+Read opi set 9 of 50 
+00:11:16 
+[1] 4731364
+Read opi set 10 of 50 
+00:14:01 
+[1] 4773469
+Read opi set 11 of 50 
+00:16:37 
+[1] 4805289
+Read opi set 12 of 50 
+00:19:23 
+[1] 4829363
+Read opi set 13 of 50 
+00:21:59 
+[1] 4847967
+Read opi set 14 of 50 
+00:24:46 
+[1] 4862434
+Read opi set 15 of 50 
+00:27:31 
+[1] 4873821
+Read opi set 16 of 50 
+00:30:10 
+[1] 4882779
+Read opi set 17 of 50 
+00:32:54 
+[1] 4889924
+Read opi set 18 of 50 
+00:35:16 
+[1] 4895575
+Read opi set 19 of 50 
+00:37:28 
+[1] 4899991
+Read opi set 20 of 50 
+00:39:46 
+[1] 4903215
+Read opi set 21 of 50 
+00:42:02 
+[1] 4904819
+Read opi set 22 of 50 
+00:44:21 
+[1] 4906023
+Read opi set 23 of 50 
+00:46:46 
+[1] 4906989
+Read opi set 24 of 50 
+00:49:19 
+[1] 4907773
+Read opi set 25 of 50 
+00:51:54 
+[1] 4908394
+Read opi set 26 of 50 
+00:54:18 
+[1] 4908891
+Read opi set 27 of 50 
+00:56:55 
+[1] 4909308
+Read opi set 28 of 50 
+00:59:15 
+[1] 4909666
+Read opi set 29 of 50 
+01:01:56 
+[1] 4909982
+Read opi set 30 of 50 
+01:04:27 
+[1] 4910267
+Read opi set 31 of 50 
+01:06:52 
+[1] 4910515
+Read opi set 32 of 50 
+01:09:13 
+[1] 4910737
+Read opi set 33 of 50 
+01:11:33 
+[1] 4910938
+Read opi set 34 of 50 
+01:13:57 
+[1] 4911117
+Read opi set 35 of 50 
+01:16:19 
+[1] 4911277
+Read opi set 36 of 50 
+01:18:43 
+[1] 4911423
+Read opi set 37 of 50 
+01:20:59 
+[1] 4911558
+Read opi set 38 of 50 
+01:23:23 
+[1] 4911683
+Read opi set 39 of 50 
+01:25:45 
+[1] 4911794
+Read opi set 40 of 50 
+01:28:06 
+[1] 4911896
+Read opi set 41 of 50 
+01:30:24 
+[1] 4911988
+Read opi set 42 of 50 
+01:32:43 
+[1] 4912071
+Read opi set 43 of 50 
+01:35:07 
+[1] 4912146
+Read opi set 44 of 50 
+01:37:28 
+[1] 4912212
+Read opi set 45 of 50 
+01:39:50 
+[1] 4912275
+Read opi set 46 of 50 
+01:42:04 
+[1] 4912331
+Read opi set 47 of 50 
+01:44:27 
+[1] 4912380
+Read opi set 48 of 50 
+01:46:50 
+[1] 4912420
+Read opi set 49 of 50 
+01:49:08 
+[1] 4912454
+Read opi set 50 of 50 
+01:51:24 
+[1] 4912480
+
+      1       2       3       4       5       6       7       8       9      10 
+1776975 1153615  752257  403529  250812  156081  105916   76037   56142   42105 
+     11      12      13      14      15      16      17      18      19      20 
+  31820   24074   18604   14467   11387    8958    7145    5651    4416    3224 
+     21      22      23      24      25      26      27      28      29      30 
+   1604    1204     966     784     621     497     417     358     316     285 
+     31      32      33      34      35      36      37      38      39      40 
+    248     222     201     179     160     146     135     125     111     102 
+     41      42      43      44      45      46      47      48      49      50 
+     92      83      75      66      63      56      49      40      34      26 
+ 7585.0  secs
+ 8981.5  secs

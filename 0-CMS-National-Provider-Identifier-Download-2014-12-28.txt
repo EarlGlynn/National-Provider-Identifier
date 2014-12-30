@@ -1,0 +1,17 @@
+[1] "2014-12-28 21:45:02 CST"
+DATA/2014-12-10/NPPES_Data_Dissemination.zip 
+          "c5173c6862ad0a38308d3356482d783a" 
+[1] "2014-12-28 21:48:40 CST"
+                                                                             size isdir mode               mtime               ctime
+DATA/2014-12-10/npidata_20050523-20141207.csv                          5401723445 FALSE  666 2014-12-28 21:48:40 2014-12-28 21:48:21
+DATA/2014-12-10/npidata_20050523-20141207FileHeader.csv                     12249 FALSE  666 2014-12-28 21:48:40 2014-12-28 21:48:40
+DATA/2014-12-10/NPPES Data Dissemination_Public File - Code Values.pdf     344918 FALSE  666 2014-12-28 21:48:40 2014-12-28 21:48:40
+DATA/2014-12-10/NPPES Data Dissemination_Public File- Readme.pdf           520252 FALSE  666 2014-12-28 21:48:40 2014-12-28 21:48:40
+                                                                                     atime exe
+DATA/2014-12-10/npidata_20050523-20141207.csv                          2014-12-28 21:48:21  no
+DATA/2014-12-10/npidata_20050523-20141207FileHeader.csv                2014-12-28 21:48:40  no
+DATA/2014-12-10/NPPES Data Dissemination_Public File - Code Values.pdf 2014-12-28 21:48:40  no
+DATA/2014-12-10/NPPES Data Dissemination_Public File- Readme.pdf       2014-12-28 21:48:40  no
+Data file:
+[1] "DATA/2014-12-10/npidata_20050523-20141207.csv"
+ 268.0  secs

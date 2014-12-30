@@ -1,7 +1,7 @@
 National Provider Identifier (NPI) Downloadable File
 ====================================================
 
-File:  Oct. 15, 2014
+File:  Dec. 10, 2014
 
 The Centers for Medicare and Medicaid Services provide a huge file of providers called by either of these names:
 
@@ -11,39 +11,24 @@ or
 
 * [National Provider Identifier (NPI) Downloadable File](http://nppes.viva-it.com/NPI_Files.html).
 
-The "Full Replacement Monthly NPI File" was a 462 MB ZIP that becomes a huge 4.98 GB file when decompressed.
+The "Full Replacement Monthly NPI File" was a 484 MB ZIP that becomes a huge 5.03 GB file when decompressed.
 
-The complete file had 4,416,197 observations of 329 variables.
+The complete file had 4,456,577 observations of 329 variables.
 
-The file is extremely bloated -- 2.9 billion of the 5.3 billion characters in the file are double quotes (") used to surround each field in the CSV file.  The file contains 1.4 billion commas to separate the many empty fields. The several repeating groups of variables should be made into separate database tables.
-
-
-R scripts
----------
-
-**0-CMS-National-Provider-Identifier-Download.R**:  Script to download the complete monthly file and take a quick look at frequency counts of values by variable.
-
-**0-CMS-NPI-data-table.R**:  R's new speedy data.table fails to load the file.
-
-**1-CMS-National-Provider-Identifier.Rewrite.R**:  After removing a few dozen tabs (x09 characters) from the original file, the file is re-written with a tab separator and no quote delimiters to reduce the size to about 2.3 GB (instead of almost 5 GB).  A subset file is also created, which is small enough to be processed by Access.
+The file is extremely bloated -- 2.9 billion of the 5.4 billion characters in the file are double quotes (") used to surround each field in the CSV file.  The file contains nearly 1.5 billion commas to separate the many empty fields. The two repeating groups of variables were made into separate database tables.
 
 
-Summary
+Scripts
 -------
 
-Using the subset, 42 of 329 fields were loaded into Access NPI table:  4,416,196 records
+**0-CMS-National-Provider-Identifier-Download.R**:  Script to download the complete monthly file.
 
-Summary of Access queries
+**1-Recode.bash**:  Bash script to remove the few tab characters (x09 characters) from file, so file can be rewritten with tab-delimiters and no quote field delimiters.
 
-**Organizations**
+**2-CMS-National-Provider-Identifier.Rewrite.R**:  After removing a few dozen tabs from the original file, the file is re-written with a tab separator and no quote delimiters to reduce the size to about 2.3 GB (instead of over 5 GB).  A separate MASTER-NPPES-info.txt file is created, which is intended to be a database table of 54 fields.
 
- * 1,035,094 all
- * 707,546 unique addresses (includes room, suite, box number, …)
- * 13,379 MO unique addresses
+**3-CMS-NPI-split.R**:  The original file contains two sets of repeating groups. Once can have up to 15 repeating groups, the other up to 50. To normalize the data and reduce the huge waste of space to store no data, this script creates two new files intended to be database tables:  MASTER-taxonomy-license.txt and MASTER-other-identifier.txt.
 
-**People**
 
- * 3,310,313 all
- * 1,976,415 unique addresses (includes room, suite, box number, …)
- * 31,220 MO unique addresses
+The file **NPPES-NPI-Overview.docx** gives some additional information.
 
