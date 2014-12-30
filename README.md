@@ -3,7 +3,7 @@ National Provider Identifier (NPI) Downloadable File
 
 File:  Dec. 10, 2014
 
-The Centers for Medicare and Medicaid Services provide a huge file of providers called by either of these names:
+The Centers for Medicare and Medicaid Services provide a huge file of healthcare providers called by either of these names:
 
 * [National Plan and Provider Enumeration System (NPPES) Downloadable File](http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/NationalProvIdentStand/DataDissemination.html).
 
@@ -23,12 +23,12 @@ Scripts
 
 **0-CMS-National-Provider-Identifier-Download.R**:  Script to download the complete monthly file.
 
-**1-Recode.bash**:  Bash script to remove the few tab characters (x09 characters) from file, so file can be rewritten with tab-delimiters and no quote field delimiters.
+**1-Recode.bash**:  Bash script to remove the few tabs (x09 characters) from file, so file can be rewritten with tab-delimiters and no quote field delimiters.
 
-**2-CMS-National-Provider-Identifier.Rewrite.R**:  After removing a few dozen tabs from the original file, the file is re-written with a tab separator and no quote delimiters to reduce the size to about 2.3 GB (instead of over 5 GB).  A separate MASTER-NPPES-info.txt file is created, which is intended to be a database table of 54 fields.
+**2-CMS-National-Provider-Identifier.Rewrite.R**:  After removing a few dozen tabs from the original file, the file is re-written with a tab separator and no quote delimiters to reduce the size to about 2.3 GB (instead of over 5 GB).  A separate **MASTER-NPPES-info.txt** file is created, which is intended to be a database table of 54 fields.
 
-**3-CMS-NPI-split.R**:  The original file contains two sets of repeating groups. Once can have up to 15 repeating groups, the other up to 50. To normalize the data and reduce the huge waste of space to store no data, this script creates two new files intended to be database tables:  MASTER-taxonomy-license.txt and MASTER-other-identifier.txt.
+**3-CMS-NPI-split.R**:  The original file contains two sets of repeating groups. One can have up to 15 repeating groups, the other up to 50. To normalize the data and reduce the huge waste of space to store no data, this script creates two new files intended to be database tables:  **MASTER-taxonomy-license.txt** and **MASTER-other-identifier.txt**.
 
 
-The file **NPPES-NPI-Overview.docx** gives some additional information.
+The file **NPPES-NPI-Overview.docx** gives some additional details.
 
