@@ -10,6 +10,8 @@ setwd("C:/Data/US-Government/Centers-for-Medicare-and-Medicaid-Services/National
 filename <- paste0("4-Missouri-Connections-",
                    format(Sys.time(), "%Y-%m-%d"), ".txt")
 sink(filename, split=TRUE)
+time.1 <- Sys.time()
+time.1
 
 # Missouri ZIP2 range:  63 to 65
 # http://en.wikipedia.org/wiki/ZIP_code
@@ -102,7 +104,7 @@ length(SELECT6.NPI)
 
 SELECT6.NPI <- unique(SELECT6.NPI)
 length(SELECT6.NPI)
-[1] 72922
+#[1] 72922
 
 # info basis
 SELECT6 <- (info$NPI %in% SELECT6.NPI)
@@ -134,7 +136,55 @@ sum(table(info$combo)[-1])
 # [1] 93074
 
 MO.Connections <- info[info$combo != " ------",]
-write.table(MO.Connections, paste0(DATA.DIR, "NPI-Missouri-Connections.txt"),
+
+write.table(MO.Connections, paste0(DATA.DIR, "NPI-Missouri-Connections-All.txt"),
             quote=FALSE, sep="\t", row.names=FALSE)
+
+###############################################################################
+### Practices in Missouri
+
+MO.Practices <- info[SELECT2 | SELECT4, ]
+nrow(MO.Practices)
+#[1] 78777
+
+# For geocoding, leave out Provider.Second.Line.Business.Mailing.Address,
+# which is often a suite
+MO.Practices$Mailing.Location <- paste(
+  MO.Practices$Provider.First.Line.Business.Mailing.Address,
+  MO.Practices$Provider.Business.Mailing.Address.City.Name,
+  MO.Practices$Provider.Business.Mailing.Address.State.Name,
+  MO.Practices$Provider.Business.Mailing.Address.Postal.Code,
+  sep="|")
+
+# For geocoding, leave out Provider.Second.Line.Business.Practice.Location.Address,
+# which is often a suite
+MO.Practices$Practice.Location <- paste(
+  MO.Practices$Provider.First.Line.Business.Practice.Location.Address,
+  MO.Practices$Provider.Business.Practice.Location.Address.City.Name,
+  MO.Practices$Provider.Business.Practice.Location.Address.State.Name,
+  MO.Practices$Provider.Business.Practice.Location.Address.Postal.Code,
+  sep="|")
+
+Mailing.Location <- unique(sort(MO.Practices$Mailing.Location))
+length(Mailing.Location)
+
+Practice.Location <- unique(sort(MO.Practices$Practice.Location))
+length(Practice.Location)
+
+length(intersect(Practice.Location, Mailing.Location))
+length(union(Practice.Location, Mailing.Location))
+
+
+###############################################################################
+### Write Missouri Practices file, Unique address lists for geocoding
+
+write.table(MO.Practices, paste0(DATA.DIR, "NPI-Missouri-Practices.txt"),
+            quote=FALSE, sep="\t", row.names=FALSE)
+
+writeLines(Mailing.Location, paste0(DATA.DIR, "NPI-Missouri-Practices-Mailing-Addresses.txt"))
+writeLines(Practice.Location, paste0(DATA.DIR, "NPI-Missouri-Practices-Practice-Addresses.txt"))
+
+time.2 <- Sys.time()
+cat(sprintf(" %.1f", as.numeric(difftime(time.2, time.1,  units="secs"))), " secs\n")
 
 sink()

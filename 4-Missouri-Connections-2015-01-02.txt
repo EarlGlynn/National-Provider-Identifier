@@ -1,0 +1,36 @@
+[1] "2015-01-02 12:48:23 CST"
+[1] "NPI"                                                    
+[2] "Provider.Business.Mailing.Address.State.Name"           
+[3] "Provider.Business.Mailing.Address.Postal.Code"          
+[4] "Provider.Business.Practice.Location.Address.State.Name" 
+[5] "Provider.Business.Practice.Location.Address.Postal.Code"
+[1] 77499
+[1] 78695
+[1] 77533
+[1] 78742
+[1] 71487
+[1] 71487
+[1] 32086
+[1] 32086
+[1] 79851
+[1] 79851
+[1] 72922
+[1] 72922
+[1] 22067
+[1] 93074
+
+ ------  -----X  ----X-  ----XX  ---X--  ---X-X  ---XXX  --X---  --X--X  --XX--  --XX-X  --XXXX  -X---- 
+4363503    6241    2425    1847      23       6       1      15       1      20      15       3       8 
+ -X---X  -X--XX  -X-X--  -X-X-X  -X-XX-  -X-XXX  -XXX--  -XXX-X  -XXXX-  -XXXXX  X-----  X----X  X---XX 
+      3       1    1389    1569     578    1408       2       9       4       7       4       1       1 
+ X-X---  X-X--X  X-X-X-  X-X-XX  X-XX--  X-XX-X  X-XXX-  X-XXXX  XX----  XX---X  XX--X-  XX--XX  XX-X-- 
+   2836     483     164     279       5       5       2       2      12       2       1       3       2 
+ XX-X-X  XX-XXX  XXX---  XXX--X  XXXX--  XXXX-X  XXXXX-  XXXXXX 
+     10       6       2       3    9373   38949    3287   22067 
+[1] 93074
+[1] 78777
+[1] 35338
+[1] 28180
+[1] 19122
+[1] 44396
+ 748.8  secs
