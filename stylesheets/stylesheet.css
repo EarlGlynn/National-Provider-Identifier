@@ -536,6 +536,7 @@ header a.button {
   right: 0;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
 }
+
 aside a.button {
   display: block;
   width: 138px;
@@ -588,7 +589,7 @@ hr {
 }
 
 table {
-  width: 100%;
+  /* width: 100%; efg, 2015-02-03 */
   border: 1px solid #ebebeb;
 }
 
@@ -598,7 +599,7 @@ th {
 
 td {
   font-weight: 300;
-  text-align: center;
+  /* t-align: center;  efg, 2015-02-03 */
   border: 1px solid #ebebeb;
 }
 
