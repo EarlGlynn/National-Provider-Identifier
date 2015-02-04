@@ -3,34 +3,50 @@ National Provider Identifier (NPI) Downloadable File
 
 File:  Dec. 10, 2014
 
-The Centers for Medicare and Medicaid Services provide a huge file of healthcare providers called by either of these names:
+See GitHub [repository web page](http://earlglynn.github.io/National-Provider-Identifier/) for general information about files with healthcare provider information.
 
-* [National Plan and Provider Enumeration System (NPPES) Downloadable File](http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/NationalProvIdentStand/DataDissemination.html).
-
-or
-
-* [National Provider Identifier (NPI) Downloadable File](http://nppes.viva-it.com/NPI_Files.html).
-
-The "Full Replacement Monthly NPI File" was a 484 MB ZIP that becomes a huge 5.03 GB file when decompressed.
-
-The complete file had 4,456,577 observations of 329 variables.
-
-The file is extremely bloated -- 2.9 billion of the 5.4 billion characters in the file are double quotes (") used to surround each field in the CSV file.  The file contains nearly 1.5 billion commas to separate the many empty fields. The two repeating groups of variables were made into separate database tables.
+That web page allows downloading the files created with the R scripts described below.
 
 
 Scripts
 -------
 
-**0-CMS-National-Provider-Identifier-Download.R**:  Script to download the complete monthly file.
+**1. File Download**
 
-**1-Recode.bash**:  Bash script to remove the few tabs (x09 characters) from file, so file can be rewritten with tab-delimiters and no quote field delimiters.
+    Script:  **0-CMS-National-Provider-Identifier-Download.R**
+    Output:  Directory:  DATA/yyyy-mm-dd
+    Files:  NPPES_Data_Dissemination.zip, **npidata_20050523-yyyymmdd.csv**
 
-**2-CMS-National-Provider-Identifier.Rewrite.R**:  After removing a few dozen tabs from the original file, the file is re-written with a tab separator and no quote delimiters to reduce the size to about 2.3 GB (instead of over 5 GB).  A separate **MASTER-NPPES-info.txt** file is created, which is intended to be a database table of 54 fields.
+**2. Recoding**
 
-**3-CMS-NPI-split.R**:  The original file contains two sets of repeating groups. One can have up to 15 repeating groups, the other up to 50. To normalize the data and reduce the huge waste of space to store no data, this script creates two new files intended to be database tables:  **MASTER-taxonomy-license.txt** and **MASTER-other-identifier.txt**.
+The original raw data is quite bloated with millions of empty fields represented by a pair of quotation marks ("").  To get rid of nearly 3 billion unnecessary quotes, the file will be re-written using tab delimiters instead of commas, but only after a small number of existing tab characters are removed.  For details, see file **1-Recoding-notes.docx**.
 
-**4-Missouri-Connections.R**:  Find providers with Missouri connections.
+    Script:  **1-Recode.bash run in Linux virtual machine**
+    Input:  npidata_20050523-yyyymmdd.csv
+    Output:  **npidata_20050523-yyyymmdd-notabs.csv**
 
+**3. Reduce File Size**
 
-The file **NPPES-NPI-Overview.docx** gives some additional details.
+Remove almost 3 billion quotation marks and change the field separator from comma to tab.
+
+    Script:  **2-CMS-National-Provider-Identifier-Rewrite.R**
+    Input:  npidata_20050523-yyyymmdd-notabs.csv
+    Outputs:  **npidata_20050523-yyyymmdd-notabs.txt**, npidata-taxonomy-license.txt, npidata-other-identifier.txt, **MASTER-NPPES-info.txt**
+
+**4. Eliminate Repeating Groups**
+
+The original raw file is not [tidy](http://vita.had.co.nz/papers/tidy-data.pdf) since two sets of different repeating groups are present.  Let's change each repeating group into a separate table with a variable number of records instead of always allocating space for a fixed number of repeating groups.
+
+    Script:  **3-CMS-NPI-split.R**
+    Inputs:  npidata-taxonomy-license.txt, npidata-other-identifier.txt
+    Outputs:  **MASTER-taxonomy-license.txt**, **MASTER-other-identifier.txt**
+
+**5. Extract Missouri Provider Addresses**
+
+The national data is nice for research purposes, but for now the focus is only on the Missouri providers.  Let's create mailing and provider business addresses to be used in geocoding.
+
+    Script:  **4-Missouri-Connections.R**
+    Inputs:  MASTER-NPPES-info.txt
+    Outputs:  NPI-Missouri-Connections-All.txt, NPI-Missouri-Practices.txt,
+    NPI-Missouri-Practices-Mailing-Addresses.txt, **NPI-Missouri-Practices-Practice-Addresses.txt**
 
