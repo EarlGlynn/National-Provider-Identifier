@@ -32,10 +32,10 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
+          <p> Earl F. Glynn, UMKC Center for Health Insights, 2015-02-04<br>
+          </p>
           <h3> <a id="nppes-npi-files" class="anchor" href="#files"
               aria-hidden="true"><span class="octicon octicon-link"></span></a>NPPES
-
-
 
 
 
@@ -65,12 +65,21 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
 
 
 
+
+
+
+
+
                 Provider Identifier (NPI)</a> downloadable file.<br>
             </li>
           </ul>
-          <p>The "Full Replacement Monthly NPI File" from Dec. 2014 was
-            a 484 MB ZIP that became a huge 5.03 GB file when
-            decompressed.</p>
+          <p>An updated <a
+              href="http://nppes.viva-it.com/NPI_Files.html">Full
+              Replacment Monthly NPI file</a> is available near the
+            middle of each month.<br>
+          </p>
+          <p>The full file from Dec. 2014 was a 484 MB ZIP that became a
+            huge 5.03 GB file when decompressed.</p>
           <h3> <a id="flat-bloated" class="anchor" href="#flat-bloated"
               aria-hidden="true"><span class="octicon octicon-link"></span></a>Flat
 
@@ -78,24 +87,35 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
 
 
 
+
+
+
+
+
             and Bloated NPI File</h3>
-          <p>The complete file had 4,456,577 observations of 329
-            variables with a very simple structure.&nbsp; Here's an
-            overview of the structure of the raw data file:<br>
+          <p>The complete file had 4,456,577 records each with 329
+            variables.&nbsp; This full file has a very simple structure,
+            which is shown below:<br>
           </p>
+          <p><b>Chart 1. Structure of Raw NPI File</b></p>
           <img alt="Structure of raw NPI file" title="Structure of raw
             NPI file" src="images/NPI-Raw-File-Structure.PNG"
             height="247" width="262"><br>
           <br>
           <p>The file is extremely bloated -- 2.9 billion of the 5.4
             billion characters in the file are double quotes (") used to
-            surround many empty fields in the CSV file. The file
-            contains nearly 1.5 billion commas to separate the many
-            empty fields. The two repeating groups of variables were
-            made into separate database tables.<br>
+            surround many empty fields in the CSV file in repeating
+            groups that are empty.&nbsp; The file contains nearly 1.5
+            billion commas to separate the many empty fields. <br>
           </p>
-          <p>Removing the repeating roups from the original file reduces
-            the size of the raw files needed to store the data.<br>
+          <p>To simplify and speed up processing, two repeating groups
+            of variables were extracted from the raw data file.&nbsp; A
+            separate table was created for <b>Taxonomy Licence/Group</b>
+            information, and another table was created for the <b>Other
+              Identification</b> information. With this approach records
+            were not needed and did not exist instead of populating
+            millions of fields with empty strings. A database "join" can
+            be used to connect the records when needed.<br>
           </p>
           <h3> <a id="database-tables" class="anchor"
               href="#database-tables" aria-hidden="true"><span
@@ -109,12 +129,18 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
 
 
 
-              repository</a>.&nbsp; <br>
+
+
+
+
+
+              repository</a> along with some information about how to
+            use them.<br>
           </p>
           <p>These three new files can be loaded into three relational
-            tables shown below:<br>
-            <br>
-            <img alt="NPI Database Tables (new)" title="NPI Database
+            tables shown below:</p>
+          <p> <b>Chart 2.&nbsp; New NPPES/NPI database tables</b></p>
+          <p> <img alt="NPI Database Tables (new)" title="NPI Database
               Tables" src="images/New-NPI-Database-Tables.PNG"
               height="615" width="720"><br>
           </p>
@@ -191,12 +217,68 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
               </tr>
             </tbody>
           </table>
+          <h4>Taxonomy License Sets</h4>
+          <p>The original file provided 15 sets of Taxonomy License
+            information whether needed or not.<br>
+          </p>
+          <p>The new file has over 5 million records, but with a
+            variable number of records per provider.&nbsp; Here is a
+            table of the number of Taxonomy License records that exist
+            by provider:<br>
+          </p>
+          <p><b>Table 1.&nbsp; Counts of Providers with Given Number of
+              Taxonomy License Records</b><br>
+          </p>
+          <pre><code>     <b> 1       2       3       4       5       6       7       8       9      10</b>
+4383720  616710  173439   57432   28708   17906   11842    8257    6016    4550
+
+     <b>11      12      13      14      15</b>
+   3535    2847    2250    1836    1377
+</code></pre>
+          <p>Only 1377 of the 4.4 million providers have information for
+            all possible 15 Taxonomy License sets.&nbsp; Mostly
+            providers (4.4 million) only needed a single record.<br>
+          </p>
+          <h4>Other Identifier</h4>
+          <p>The original file provided 50 sets of Other Identifier
+            information whether needed or not.<br>
+          </p>
+          <p>The new file has nearly 5 million records, but with a
+            variable number of records per provider.&nbsp; <br>
+          </p>
+          <p><b>Table 2.&nbsp; Counts of Providers with Given Number of
+              Other Identifier Records</b> </p>
+          <pre><code>   <b>   1       2       3       4       5       6       7       8       9      10</b>
+1776975 1153615  752257  403529  250812  156081  105916   76037   56142   42105
+
+    <b> 11      12      13      14      15      16      17      18      19      20</b>
+  31820   24074   18604   14467   11387    8958    7145    5651    4416    3224
+
+    <b> 21      22      23      24      25      26      27      28      29      30</b>
+   1604    1204     966     784     621     497     417     358     316     285
+
+     3<b>1      32      33      34      35      36      37      38      39      40</b>
+    248     222     201     179     160     146     135     125     111     102
+
+     <b>41      42      43      44      45      46      47      48      49      50</b>
+     92      83      75      66      63      56      49      40      34      26
+</code></pre>
+          <p>Only 26 of the 4.4 million providers have information for
+            all possible Other Identifier sets.&nbsp; About two-thirds
+            of the providers have only one or two Other Identifer
+            records.<br>
+          </p>
           <h3> <a id="missouri-providers" class="anchor"
               href="#missouri" aria-hidden="true"><span class="octicon
                 octicon-link"></span></a>Missouri Providers<br>
           </h3>
           <p>An R srcript extracted records with Missouri connnections
             (fields in either/both of the <b>Taxonomy License</b> and <b>Other
+
+
+
+
+
 
 
 
@@ -213,13 +295,10 @@ src="https://app.box.com/embed_widget/s/6artes0pgpujpii2y6l4k68i3mdw9cz5?view=li
             allowfullscreen="" webkitallowfullscreen=""
             msallowfullscreen="" height="500" width="500"
             frameborder="0"></iframe>
-          <hr> Earl F Glynn<br>
-          UMKC Center for Health Insights<br>
-          <img alt="UMKC Center for Health Insights" title="UMKC Center
-            for Health Insights" src="images/CHI-UMKC.png" height="180"
-            width="185"><br>
+          <hr> <img alt="UMKC Center for Health Insights" title="UMKC
+            Center for Health Insights" src="images/CHI-UMKC.png"
+            height="180" width="185"><br>
           <br>
-          2015-02-03<br>
         </section>
         <aside id="sidebar"> <a
 href="https://github.com/EarlGlynn/National-Provider-Identifier/zipball/master"
@@ -231,6 +310,11 @@ href="https://github.com/EarlGlynn/National-Provider-Identifier/tarball/master"
           <p>This page was generated by <a
               href="https://pages.github.com">GitHub Pages</a> using the
             Architect theme by <a href="https://twitter.com/jasonlong">Jason
+
+
+
+
+
 
 
 
