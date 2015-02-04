@@ -13,16 +13,20 @@ Scripts
 
 **1. File Download**
 
+```
 Script:  **0-CMS-National-Provider-Identifier-Download.R**
 Output:  Directory:  DATA/yyyy-mm-dd
 Files:  NPPES_Data_Dissemination.zip, **npidata_20050523-yyyymmdd.csv**
+```
 
 **2. Recoding**
 
 The original raw data is quite bloated with millions of empty fields represented by a pair of quotation marks ("").  To get rid of nearly 3 billion unnecessary quotes, the file will be re-written using tab delimiters instead of commas, but only after a small number of existing tab characters are removed.  For details, see file **1-Recoding-notes.docx**.
 
 Script:  **1-Recode.bash run in Linux virtual machine**
+
 Input:  npidata_20050523-yyyymmdd.csv
+
 Output:  **npidata_20050523-yyyymmdd-notabs.csv**
 
 **3. Reduce File Size**
