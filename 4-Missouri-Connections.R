@@ -7,6 +7,8 @@
 setwd("C:/Data/US-Government/Centers-for-Medicare-and-Medicaid-Services/National-Provider-Identifier/")  #####
 #setwd("E:/FOIA/Centers-for-Medicare-and-Medicaid-Services/National-Provider-Identifier/")
 
+library(stringr)  #  str_trim
+
 filename <- paste0("4-Missouri-Connections-",
                    format(Sys.time(), "%Y-%m-%d"), ".txt")
 sink(filename, split=TRUE)
@@ -150,7 +152,7 @@ nrow(MO.Practices)
 # For geocoding, leave out Provider.Second.Line.Business.Mailing.Address,
 # which is often a suite
 MO.Practices$Mailing.Location <- paste(
-  MO.Practices$Provider.First.Line.Business.Mailing.Address,
+  str_trim(gsub("#", " ", MO.Practices$Provider.First.Line.Business.Mailing.Address)),
   MO.Practices$Provider.Business.Mailing.Address.City.Name,
   MO.Practices$Provider.Business.Mailing.Address.State.Name,
   MO.Practices$Provider.Business.Mailing.Address.Postal.Code,
@@ -159,7 +161,7 @@ MO.Practices$Mailing.Location <- paste(
 # For geocoding, leave out Provider.Second.Line.Business.Practice.Location.Address,
 # which is often a suite
 MO.Practices$Practice.Location <- paste(
-  MO.Practices$Provider.First.Line.Business.Practice.Location.Address,
+  str_trim(gsub("#", " ", MO.Practices$Provider.First.Line.Business.Practice.Location.Address)),
   MO.Practices$Provider.Business.Practice.Location.Address.City.Name,
   MO.Practices$Provider.Business.Practice.Location.Address.State.Name,
   MO.Practices$Provider.Business.Practice.Location.Address.Postal.Code,
