@@ -41,6 +41,7 @@
 
 
 
+
             / NPI File</h3>
           <p>The <a href="http://www.cms.gov/">Centers for Medicare and
               Medicaid Services</a> provide a huge file of healthcare
@@ -55,10 +56,12 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
 
 
 
+
                 Plan and Provider Enumeration System (NPPES)</a>
               downloadable file, or <br>
             </li>
             <li><a href="http://nppes.viva-it.com/NPI_Files.html">National
+
 
 
 
@@ -92,6 +95,7 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
 
 
 
+
             and Bloated NPI File</h3>
           <p>The complete file had 4,456,577 records each with 329
             variables.&nbsp; This full file has a very simple structure,
@@ -110,7 +114,7 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
           </p>
           <p>To simplify and speed up processing, two repeating groups
             of variables were extracted from the raw data file.&nbsp; A
-            separate table was created for <b>Taxonomy Licence/Group</b>
+            separate table was created for <b>Taxonomy License/Group</b>
             information, and another table was created for the <b>Other
               Identification</b> information. With this approach records
             were not needed and did not exist instead of populating
@@ -124,6 +128,7 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
           <p>R scripts to download, cleanup and divide the original file
             into three separate files can be found at the <a
               href="https://github.com/EarlGlynn/National-Provider-Identifier">GitHub
+
 
 
 
@@ -265,27 +270,107 @@ href="http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplific
 </code></pre>
           <p>Only 26 of the 4.4 million providers have information for
             all possible Other Identifier sets.&nbsp; About two-thirds
-            of the providers have only one or two Other Identifer
+            of the providers have only one or two Other Identifier
             records.<br>
           </p>
           <h3> <a id="missouri-providers" class="anchor"
               href="#missouri" aria-hidden="true"><span class="octicon
                 octicon-link"></span></a>Missouri Providers<br>
           </h3>
-          <p>An R srcript extracted records with Missouri connnections
-            (fields in either/both of the <b>Taxonomy License</b> and <b>Other
-
-
-
-
-
-
-
-
-
-              Identifier</b> files can say "Missouri"), including a
-            separate file with Missouri Provider addresses for
-            geocoding.<br>
+          <p>The <i>4-Missouri-Connections.R</i> script extracted
+            records with Missouri connections.<br>
+          </p>
+          <p>A very broad inclusion criteria for a Missouri provider can
+            consist of six checks:&nbsp; <br>
+          </p>
+          <ul>
+            <li>Provider.Business.Mailing.Address.State.Name&nbsp;
+              ["Missouri" or "MO" ==&gt; 77,499]<br>
+            </li>
+            <li>Provider.Business.Practice.Location.Address.State.Name
+              ["Missouri" or "MO" ==&gt; 78,695]</li>
+            <li>Provider.Business.Mailing.Address.Postal.Code [5- or
+              9-digit zip starting with 63, 64 or 65 ==&gt; 77,533]</li>
+            <li>Provider.Business.Practice.Location.Address.Postal.Code
+              [5- or 9-digit zip starting with 63, 64 or 65 ==&gt;
+              78,742]</li>
+            <li>In one of original 50 fields:&nbsp;
+              Other.Provider.Identifier.State&nbsp; ["MO" ==&gt; 32,086]</li>
+            <li>In one of original 15 fields:&nbsp;
+              Provider.License.Number.State.Code ["MO" ==&gt; 72,922]</li>
+          </ul>
+          <p>The file <b>NPI-Missorui-Connections-All.txt</b> is a list
+            of 93,074 providers that had one or more Missouri
+            connections from the list of six criteria above.<br>
+          </p>
+          <p>A more restrictive list of 78,777 Missouri providers in
+            file NPI-Missouri-Practices.txt was formed for those who
+            passed either of these two criteria:</p>
+          <ul>
+            <li>Provider.Business.Practice.Location.Address.State.Name
+              ["Missouri" or "MO" ==&gt; 78,695]</li>
+            <li>Provider.Business.Practice.Location.Address.Postal.Code
+              [5- or 9-digit zip starting with 63, 64 or 65 ==&gt;
+              78,742]</li>
+          </ul>
+          <p>The list of 78,777 Missouri providers had far fewer mailing
+            or street addresses, as shown in the files
+            NPI-Missouri-Practices-Mailing-Addresses.txt and <b>NPI-Missouri-Practices-Practice-Addresses.txt</b>.&nbsp;
+            See Table 3.<br>
+          </p>
+          <p><b>Table 3.&nbsp; Missouri Provider Files</b><br>
+          </p>
+          <table width="100%" cellpadding="2" cellspacing="2" border="1">
+            <tbody>
+              <tr>
+                <td valign="top" align="center"><b>File</b><br>
+                </td>
+                <td valign="top" align="center"><b>Record Count</b><br>
+                  (excludes header)<br>
+                </td>
+                <td valign="top" align="center"><b>Comments</b><br>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top"><b>NPI-Missouri-Connections-All.txt</b><br>
+                </td>
+                <td valign="top" align="right">93,074<br>
+                </td>
+                <td valign="top">Very broad inclusion criteria for
+                  Missouri provider.<br>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top"><b>NPI-Missouri-Practices.txt</b><br>
+                </td>
+                <td valign="top" align="right">78,777<br>
+                </td>
+                <td valign="top">Provider with Missouri mailing or
+                  street address<br>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top">NPI-Missouri-Practices- <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp; Mailing-Addresses.txt</td>
+                <td valign="top" align="right">35,337<br>
+                </td>
+                <td valign="top">The 78,777 Missouri practices have
+                  35,337 unique mailing addresses<br>
+                </td>
+              </tr>
+              <tr>
+                <td valign="top"><b>NPI-Missouri-Practices- </b><b><br>
+                  </b><b>&nbsp;&nbsp;&nbsp;&nbsp; </b><b>Practice-Addresses.txt</b><br>
+                </td>
+                <td valign="top" align="right">28,180<br>
+                </td>
+                <td valign="top">The 78,777 Missouri practices have
+                  28,179 unique street addresses<br>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p><br>
           </p>
           <h3> <a id="download-files" class="anchor"
               href="#download-files" aria-hidden="true"><span
@@ -310,6 +395,7 @@ href="https://github.com/EarlGlynn/National-Provider-Identifier/tarball/master"
           <p>This page was generated by <a
               href="https://pages.github.com">GitHub Pages</a> using the
             Architect theme by <a href="https://twitter.com/jasonlong">Jason
+
 
 
 
